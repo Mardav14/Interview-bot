@@ -1,10 +1,9 @@
 import React from 'react'
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 const HomePage = () => {
   return (
-    <div>
-      <p>Home page</p>
-    </div>
+    <h1>home page</h1>
   )
 }
 

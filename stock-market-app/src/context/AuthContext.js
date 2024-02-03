@@ -28,14 +28,14 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
             localStorage.setItem("authTokens", JSON.stringify(data))
-            navigate('/')
+            navigate('/user')
         }
         else{
             alert("Something went wrong")
         }
         
     }
-    let logoutUser = ()=> {
+    let logoutUser = () => {
         setAuthTokens(null)
         setUser(null)
         localStorage.removeItem("authTokens")
@@ -66,13 +66,33 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    let register = async (e)=>{
+        e.preventDefault()
+        let response = await fetch("http://127.0.0.1:8000/api/register/", {
+            method : "POST",
+            headers : {
+                "Content-Type": "application/json" 
+            },
+            body : JSON.stringify({'username': e.target.username.value, 'email':e.target.email.value,'password':e.target.password.value,}),
+
+        })
+        let data = await response.json()
+        if(response.status === 201){
+           alert("account created!")
+        }
+        else{
+            alert("Something went wrong")
+        }
+        
+    }
     
 
     let contextData = {
         user : user,
         authTokens : authTokens,
         loginUser : loginUser,
-        logoutUser: logoutUser
+        logoutUser : logoutUser,
+        register : register
     }
 
     useEffect(()=>{
