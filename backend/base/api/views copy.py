@@ -85,8 +85,9 @@ def getQuestions(request):
     resume = user.resume.path
     resume_text = chatGpt.read_file(resume)
     questions =chatGpt.get_all_questions(desc, resume_text)
-    # serialized_data = {**serializer.data, 'questions': ['Hello, Mardav', 'Tell us something about yourself.', 'What is the importance of resourcefulness in a fast-paced and innovative work environment?\n\nA) Resourcefulness helps in maintaining a structured project management approach.\nB) Resourcefulness allows for quick decision-making and problem-solving.\nC) Resourcefulness is primarily focused on individual achievements.', 'What is the key characteristic of a person with resourcefulness?\nA) Ability to manage multiple projects simultaneously\nB) Capability to find solutions with limited resources\nC) Strong communication skills\nD) Proficiency in programming languages', 'Which skill involves the ability to measure initiatives quantitatively and draw actionable insights to guide decisions?\n\nA) Project management skills  \nB) Analytical abilities  \nC) Ability to work with remote teams  \nD) Resourcefulness  \nE) Experience working with lean teams  ', 'Can you provide an example of a time when you demonstrated resourcefulness in a work setting?', 'Can you provide an example of a project where you demonstrated resourcefulness and worked effectively with a lean team to achieve successful results?', 'Can you provide an example of a project where you demonstrated resourcefulness and worked effectively with a lean team to achieve successful outcomes?']}
+    # serialized_data = []
     serialized_data = {**serializer.data, 'questions': questions}
+    print(questions)
     return Response(serialized_data)
 
 @api_view(['POST'])
