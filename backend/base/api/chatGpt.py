@@ -7,7 +7,8 @@ import mimetypes
 import random
 
 # OpenAI API key
-openai.api_key = "sk-proj-NlqaDa0RW4U4FXn3CqGtT3BlbkFJlwzrLNgRe4ajGMrRYoSf"
+openai.api_key = "secret-key"
+
 
 # File paths
 
